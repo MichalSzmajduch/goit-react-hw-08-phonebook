@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import s from './ContactForm.module.css';
-import { addContactsThunk, getContactsThunk } from 'redux/constants';
+import { addContactsThunk, getContactsThunk } from '../../redux/constants';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();

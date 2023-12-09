@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutThunk } from 'redux/User/userThunk';
-import { selectUser } from 'redux/constants';
+import { logoutThunk } from '../../redux/User/userThunk';
+import { selectUser } from '../../redux/constants';
 
 import s from './InfoUser.module.css';
 const InfoUser = () => {

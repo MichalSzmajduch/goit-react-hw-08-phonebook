@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import InfoUser from 'components/InfoUser/InfoUser';
-import { selectToken, selectUser } from 'redux/constants';
+import InfoUser from '../InfoUser/InfoUser';
+import { selectToken, selectUser } from '../../redux/constants';
 
 import s from './navigation.module.css';
 

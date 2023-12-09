@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectToken } from 'redux/constants';
+import { selectToken } from '../../redux/constants';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 export const PublicRoute = () => {
