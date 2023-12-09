@@ -1,14 +1,27 @@
-.title {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  margin-bottom: 10px;
-  font-weight: lighter;
-  margin-left: 10px;
-}
 .input {
+  width: 30vw;
+  height: 30px;
+  border-radius: 5px;
+
+  outline: none;
+  transition: placeholder 0.3s;
+  font-size: 16px;
+}
+.input:hover {
+  border: 2px solid #ccc;
+}
+input::placeholder:focus {
+  opacity: 0;
+}
+
+.wrapper {
   display: flex;
-  padding: 3px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-  margin-left: 10px;
-  border: 1px solid black;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+h2 {
+  font-size: 1.2em;
+  color: dimgray;
 }

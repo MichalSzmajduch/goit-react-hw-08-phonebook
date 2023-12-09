@@ -1,21 +1,74 @@
-.input {
+.submit {
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
   display: flex;
-  padding: 3px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-  margin-left: 10px;
-  border: 1px solid black;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
-.addContact {
-  border: 1px solid grey;
-  padding: 10px 20px;
-  margin-left: 10px;
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  color: #444;
+}
+
+.input {
+  width: 30vw;
+  height: 30px;
   border-radius: 5px;
-  cursor: pointer;
-}
-.title {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 5px;
   margin-bottom: 10px;
-  font-weight: lighter;
-  margin-left: 10px;
+  outline: none;
+  transition: placeholder 0.3s;
+  font-size: 16px;
+}
+.input:hover {
+  border: 2px solid #ccc;
+}
+input::placeholder:focus {
+  opacity: 0;
+}
+
+.btnAfter {
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  z-index: 1;
+}
+.btnAfter::after {
+  content: '';
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 5px;
+  left: 5px;
+  transition: 0.2s;
+  opacity: 80%;
+}
+.btnAfter:hover::after {
+  top: 0px;
+  left: 0px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
 }

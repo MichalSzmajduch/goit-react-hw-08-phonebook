@@ -1,50 +1,34 @@
-import PropTypes from 'prop-types';
-
-import { ContactList } from './contactList/ContactList';
-
-import { Routes, Route } from 'react-router-dom';
-import Layout from './layout/layout';
-import Login from './login/login';
-import Register from './login/register';
-import Home from './home/home';
-import PrivateRoute from './privateRoute/PrivateRoute';
-import ProtectedRoute from './protectedRoute/ProtectedRoute';
 import { useDispatch } from 'react-redux';
-import { currentUser } from 'redux/reducers/auth/operations';
 import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-export const App = () => {
+import ContactsList from './Contacts/Contacts';
+import { PublicRoute } from './Public/PublicRoute';
+import Login from 'pages/Login';
+import { SignUp } from 'pages/SignUp';
+import { Navigation } from './Navigation/Navigation';
+import { PrivateRoute } from './Private/PrivateRoute';
+import { refreshUserThunk } from '../redux/User/userThunk';
+
+const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(currentUser());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
-
   return (
-    <div>
+    <>
+      <Navigation />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route
-            path="login"
-            element={
-              <ProtectedRoute element={<Login />} redirect="/contactlist" />
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <ProtectedRoute element={<Register />} redirect="/contactlist" />
-            }
-          />
-          <Route
-            path="contactList"
-            element={
-              <PrivateRoute element={<ContactList />} redirect="/login" />
-            }
-          />
+        <Route path="/" element={<PublicRoute />}>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/contacts" element={<ContactsList />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };
+
+export default App;

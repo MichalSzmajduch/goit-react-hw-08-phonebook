@@ -1,36 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/reducers/contacts/operations';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { delContactsThunk } from 'redux/constants';
+import s from './contacts.module.css';
 
-import css from './contacts.module.css';
-
-export const Contacts = ({ contact }) => {
+const Contacts = ({ listContact }) => {
   const dispatch = useDispatch();
 
-  const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
-  };
+  if (!listContact || !Array.isArray(listContact) || listContact.length === 0) {
+    return <p>No contacts found</p>;
+  }
 
-  return (
-    <li>
-      {contact.name}: {contact.number}
-      <button
-        onClick={() => handleDeleteContact(contact.id)}
-        className={css.deleteContact}
-      >
-        Delete
-      </button>
-    </li>
-  );
+  return listContact.map(contact => {
+    return (
+      <ul className={s.list}>
+        <li className={s.contact} key={contact.id}>
+          {contact.name} - {contact.phone}
+          <button
+            className={s.btn}
+            onClick={() => {
+              dispatch(delContactsThunk(contact.id));
+            }}
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    );
+  });
 };
 
+export default Contacts;
+
 Contacts.propTypes = {
-  contact: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
+  listContact: PropTypes.array,
 };
